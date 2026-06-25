@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="650"
+            prefWidth="850"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="notification.popupManager.Controller.ReaderController"
+            style="-fx-background-color: #0f172a;">
+
+    <!-- ================================================= -->
+    <!-- TOP HEADER -->
+    <!-- ================================================= -->
+
+    <top>
+
+        <HBox alignment="CENTER_LEFT"
+              spacing="12"
+              style="-fx-background-color: #111827;
+                     -fx-border-color: #1e293b;
+                     -fx-border-width: 0 0 1 0;">
+
+            <padding>
+                <Insets top="16" right="20" bottom="16" left="20"/>
+            </padding>
+
+            <Label text="🤖 AI Email Assistant"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 22px;
+                          -fx-font-weight: bold;" />
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="closeButton"
+                    onAction="#handleClose"
+                    text="✕"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #94a3b8;
+                           -fx-font-size: 16px;
+                           -fx-cursor: hand;" />
+
+        </HBox>
+
+    </top>
+
+    <!-- ================================================= -->
+    <!-- CENTER -->
+    <!-- ================================================= -->
+
+    <center>
+
+        <VBox spacing="18"
+              style="-fx-padding: 24;">
+
+            <!-- SUCCESS STATUS -->
+
+            <Label fx:id="statusLabel"
+                   text="Email Sent Successfully"
+                   visible="false"
+                   managed="false"
+                   maxWidth="Infinity"
+                   alignment="CENTER"
+                   style="-fx-background-color: #16a34a;
+                          -fx-text-fill: white;
+                          -fx-padding: 12;
+                          -fx-background-radius: 12;
+                          -fx-font-size: 14px;
+                          -fx-font-weight: bold;" />
+
+            <!-- SUBJECT CARD -->
+
+            <VBox spacing="8">
+
+                <Label text="Subject"
+                       style="-fx-text-fill: #94a3b8;
+                              -fx-font-size: 13px;
+                              -fx-font-weight: bold;" />
+
+                <Label fx:id="subjectLabel"
+                       wrapText="true"
+                       text="Meeting Follow-up"
+                       style="-fx-background-color: #1e293b;
+                              -fx-background-radius: 14;
+                              -fx-padding: 16;
+                              -fx-text-fill: white;
+                              -fx-font-size: 15px;" />
+
+            </VBox>
+
+            <!-- GENERATED EMAIL -->
+
+            <VBox spacing="8"
+                  VBox.vgrow="ALWAYS">
+
+                <HBox alignment="CENTER_LEFT">
+
+                    <Label text="Generated Email"
+                           style="-fx-text-fill: #94a3b8;
+                                  -fx-font-size: 13px;
+                                  -fx-font-weight: bold;" />
+
+                    <Region HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <!-- EMAIL BOX -->
+
+                <StackPane
+                           style="-fx-background-color: #1e293b;
+                                  -fx-background-radius: 16;
+                                  -fx-padding: 2;">
+
+                   <TextArea fx:id="emailArea"
+                        editable="false"
+                        wrapText="true"
+                        focusTraversable="false"
+                        text="Generated email will appear here..."
+                        prefHeight="120"
+                        minHeight="120"
+                        maxHeight="320"
+                        style="
+                            -fx-control-inner-background: #1e293b;
+                            -fx-background-color: #1e293b;
+                            -fx-text-fill: white;
+                            -fx-prompt-text-fill: #64748b;
+                            -fx-background-radius: 16;
+                            -fx-border-radius: 16;
+                            -fx-border-color: transparent;
+                            -fx-highlight-fill: #2563eb;
+                            -fx-highlight-text-fill: white;
+                            -fx-focus-color: transparent;
+                            -fx-faint-focus-color: transparent;
+                            -fx-background-insets: 0;
+                            -fx-border-insets: 0;
+                            -fx-padding: 18;
+                            -fx-font-size: 14px;
+                        " />
+                </StackPane>
+
+            </VBox>
+
+            <!-- FEEDBACK -->
+
+            <VBox spacing="8">
+
+                <Label text="Feedback / Suggestions"
+                       style="-fx-text-fill: #94a3b8;
+                              -fx-font-size: 13px;
+                              -fx-font-weight: bold;" />
+
+               <TextArea fx:id="feedbackArea"
+                    prefHeight="110"
+                    wrapText="true"
+                    promptText="Tell AI what should improve..."
+                    style="
+                        -fx-control-inner-background: #1e293b;
+                        -fx-background-color: #1e293b;
+                        -fx-text-fill: white;
+                        -fx-prompt-text-fill: #64748b;
+                        -fx-background-radius: 16;
+                        -fx-border-radius: 16;
+                        -fx-border-color: transparent;
+                        -fx-highlight-fill: #2563eb;
+                        -fx-highlight-text-fill: white;
+                        -fx-focus-color: transparent;
+                        -fx-faint-focus-color: transparent;
+                        -fx-background-insets: 0;
+                        -fx-border-insets: 0;
+                        -fx-padding: 16;
+                        -fx-font-size: 14px;
+                    " />
+
+            </VBox>
+
+        </VBox>
+
+    </center>
+
+    <!-- ================================================= -->
+    <!-- BOTTOM ACTIONS -->
+    <!-- ================================================= -->
+
+    <bottom>
+
+        <HBox alignment="CENTER_RIGHT"
+              spacing="12"
+              style="-fx-background-color: #111827;
+                     -fx-border-color: #1e293b;
+                     -fx-border-width: 1 0 0 0;">
+
+            <padding>
+                <Insets top="16" right="20" bottom="16" left="20"/>
+            </padding>
+
+            <Button fx:id="regenerateButton"
+                    onAction="#handleRegenerate"
+                    text="Regenerate"
+                    style="-fx-background-color: #374151;
+                           -fx-text-fill: white;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 18;
+                           -fx-font-weight: bold;" />
+
+            <Button fx:id="saveButton"
+                    onAction="#handleSave"
+                    text="Save Draft"
+                    style="-fx-background-color: #2563eb;
+                           -fx-text-fill: white;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 18;
+                           -fx-font-weight: bold;" />
+
+            <Button fx:id="sendButton"
+                    onAction="#handleSend"
+                    text="Send Email"
+                    style="-fx-background-color: #10b981;
+                           -fx-text-fill: white;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 18;
+                           -fx-font-weight: bold;" />
+
+        </HBox>
+
+    </bottom>
+
+</BorderPane>

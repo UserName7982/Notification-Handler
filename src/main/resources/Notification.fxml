@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" 
+              
+               xmlns="http://javafx.com/javafx/8"
+               fx:controller="notification.popupManager.Controller.NotificationController"
+               style="-fx-background-color: transparent; -fx-cursor: hand;">
+   <children>
+   
+     <HBox alignment="CENTER_LEFT" spacing="12" 
+     style="-fx-background-color: linear-gradient(to right, #1f2937, #111827); -fx-background-radius: 15; -fx-padding: 15;-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0.3, 0, 5);">
+     <children>
+              <!-- Icon -->
+              <Label fx:id="icon" 
+              style="-fx-font-size: 20px; -fx-text-fill: #fbbf24;" 
+              text="🔔" />
+              <!-- Text Content -->
+              <VBox spacing="5">
+         <children>
+               <Label fx:id="title" 
+               style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" 
+               text="Notification Title" />
+               
+               <Label fx:id="message"
+               maxWidth="200"
+               style="-fx-text-fill: #9ca3af; -fx-font-size: 12px;" 
+               text="This is a notification message" 
+               wrapText="true" />
+          
+         <HBox fx:id="PermissionButtons" 
+
+               spacing="5"
+               prefHeight="0.0"
+               prefWidth="0.0"
+               visible="false"
+               managed="false">
+               <Button fx:id="Allow" onAction="#handleAllow"
+               style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 5 10;"
+               text="Allow" />
+               <Button fx:id="Deny" onAction="#handleDeny"
+               style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 5 10;"
+               text="Deny" />
+               
+         </HBox>
+         
+         </children>
+              </VBox>
+              <!-- Spacer -->
+              <Region HBox.hgrow="ALWAYS" />
+              <!-- Action Buttons -->
+         <VBox fx:id="CloseButton"
+          spacing="5">
+          <children>
+               <Button onAction="#handleClose" 
+               style="-fx-background-color: transparent;-fx-text-fill: #9ca3af;" 
+               text="✕" />
+          </children>
+         </VBox>
+     </children>
+     </HBox>
+   </children>
+</StackPane>
