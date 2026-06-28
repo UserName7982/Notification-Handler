@@ -21,7 +21,7 @@ public class WebSocketConnection {
     private static final Logger logger = Logger.getLogger(WebSocketConnection.class.getName());
     private volatile boolean isConnected = false;
     private String URI = "ws://localhost:8000/notification/ws";
-    private int max_retry = 5;
+    private int max_retry = 20;
     private handleMessage handler = new handleMessage();
     private StorageService storageService;
     private List<Notification> notifications;

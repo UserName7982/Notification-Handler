@@ -27,6 +27,7 @@
                
                <Label fx:id="message"
                maxWidth="200"
+               maxHeight="45"
                style="-fx-text-fill: #9ca3af; -fx-font-size: 12px;" 
                text="This is a notification message" 
                wrapText="true" />

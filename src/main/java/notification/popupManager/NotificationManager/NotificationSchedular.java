@@ -22,7 +22,6 @@ public class NotificationSchedular {
         pendingTask = scheduledExecutorService.schedule(() -> {
             try {
                 logger.info("Saving notifications to file...");
-
                 storageService.saveNotification(NotificationStore.getAll());
             } catch (exception e) {
                 logger.severe("Error occurred while saving notifications: " + e.getMessage());
