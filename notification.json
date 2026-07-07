@@ -43,14 +43,5 @@
         "isRead": false,
         "title": "Important Email",
         "read": false
-    },
-    {
-        "id": "user_156",
-        "message": "Nico Robin, i am fine thank you",
-        "event": "1",
-        "timeStamp": "2026-05-27",
-        "isRead": false,
-        "title": "message Form Robin",
-        "read": false
     }
 ]

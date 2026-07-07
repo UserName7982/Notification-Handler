@@ -26,12 +26,18 @@ public class NotificationController {
     private WebSocketConnection connection = WebSocketConnection.getInstance();
     private String notificationId;
     private String event;
+    private Runnable onclose;
     @FXML
     public void handleClose() {
         NotificationStore.notifications.get(notificationId).setRead(true);
         NotificationStore.remove(notificationId);
         NotificationSchedular.schduledsave();
-        CloseButton.getScene().getWindow().hide();
+        if (onclose != null)
+            onclose.run();
+    }
+
+    public void setOnClose(Runnable onclose) {
+        this.onclose = onclose;
     }
 
     @FXML
@@ -40,7 +46,7 @@ public class NotificationController {
         this.title.setText(title);
         this.message.setText(message);
         this.event=event;
-        if(event.equals("Permission")){
+        if(event.equals("email_send")){
             PermissionButtons.setVisible(true);
             PermissionButtons.setManaged(true);
         }
@@ -51,7 +57,7 @@ public class NotificationController {
         // Handle allow action
         System.out.println("Permission Allowed for event: " + event);
         Map<String, String> response = new HashMap<>();
-        response.put("status", "Allowed");
+        response.put("status", "approved");
         response.put("feedback", "");
         response.put("id", notificationId);
         ObjectMapper mapper = new ObjectMapper();
@@ -69,7 +75,7 @@ public class NotificationController {
         // Handle deny action
         System.out.println("Permission Denied for event: " + event);
         Map<String, String> response = new HashMap<>();
-        response.put("status", "Denied");
+        response.put("status", "reject");
         response.put("feedback", "");
         response.put("id", notificationId);
         ObjectMapper mapper = new ObjectMapper();

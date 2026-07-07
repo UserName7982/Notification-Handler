@@ -12,12 +12,14 @@ public class App extends Application {
     private WebSocketConnection connection;
     private static boolean isRunning = false;
     private static final Logger logger = Logger.getLogger(App.class.getName());
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+        stage.hide();
         logger.info("Starting JavaFX");
         connection = WebSocketConnection.getInstance();
         connection.connect();

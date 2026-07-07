@@ -35,7 +35,7 @@ public class NotificationWorker {
                             java.util.concurrent.TimeUnit.MILLISECONDS);
                     if (notify != null) {
                         Platform.runLater(() -> {
-                            NotificationCard card = new NotificationCard();
+                            NotificationCard card = NotificationCard.getInstance();
                             card.show(notify);
                         });
                     }

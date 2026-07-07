@@ -19,7 +19,7 @@ public class WebSocketConnection {
     private ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
     private OkHttpClient client;
     private static final Logger logger = Logger.getLogger(WebSocketConnection.class.getName());
-    private volatile boolean isConnected = false;
+    private static boolean isConnected = false;
     private String URI = "ws://localhost:8000/notification/ws";
     private int max_retry = 20;
     private handleMessage handler = new handleMessage();
@@ -81,7 +81,6 @@ public class WebSocketConnection {
 
             @Override
             public void onClosed(WebSocket ws, int code, String reason) {
-                isConnected = false;
                 logger.info("Connection closed: " + reason);
             }
         });

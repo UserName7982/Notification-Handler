@@ -23,11 +23,13 @@
          <children>
                <Label fx:id="title" 
                style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" 
-               text="Notification Title" />
+               text="Notification Title"
+               maxWidth="180"/>
                
                <Label fx:id="message"
                maxWidth="200"
                maxHeight="45"
+               prefWidth="100"
                style="-fx-text-fill: #9ca3af; -fx-font-size: 12px;" 
                text="This is a notification message" 
                wrapText="true" />
